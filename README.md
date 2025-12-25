@@ -35,7 +35,7 @@ Built with **Node.js**, **TypeScript**, **Express**, **Prisma**, and **PostgreSQ
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/hairuljr/meeting-room-booking-api.git
    cd meeting-room-booking-api
    ```
 
