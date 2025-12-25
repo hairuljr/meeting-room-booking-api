@@ -106,6 +106,21 @@ export const createRoom = async (
  *         application/json:
  *           schema:
  *             type: object
+ *             required:
+ *               - name
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: Meeting Room C
+ *               capacity:
+ *                 type: integer
+ *                 example: 15
+ *               location:
+ *                 type: string
+ *                 example: Floor 3
+ *               description:
+ *                 type: string
+ *                 example: Medium-sized meeting room
  *     responses:
  *       200:
  *         description: Room updated successfully
