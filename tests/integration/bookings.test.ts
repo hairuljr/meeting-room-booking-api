@@ -204,7 +204,7 @@ describe('Bookings Integration Tests', () => {
                 });
 
             expect(response.status).toBe(400);
-            expect(response.body.message).toContain('Minimum booking duration');
+            expect(response.body.message).toContain('Durasi booking minimal');
         });
     });
 

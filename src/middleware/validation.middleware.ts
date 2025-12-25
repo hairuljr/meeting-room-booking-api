@@ -19,7 +19,7 @@ export const validate = (schema: ZodSchema) => {
                     field: err.path ? err.path.join('.') : 'unknown',
                     message: err.message,
                 }));
-                next(new ValidationError('Validation failed', mappedErrors));
+                next(new ValidationError('Validasi gagal', mappedErrors));
             } else {
                 next(error);
             }

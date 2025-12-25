@@ -19,7 +19,7 @@ export class BookingService {
         });
 
         if (!room || !room.isActive) {
-            throw new NotFoundError('Room not found');
+            throw new NotFoundError('Ruangan tidak ditemukan');
         }
 
         // Check for conflicts
@@ -81,16 +81,16 @@ export class BookingService {
         const minimumDuration = 30 * 60 * 1000; // 30 minutes in milliseconds
 
         if (startTime >= endTime) {
-            throw new ValidationError('Start time must be before end time');
+            throw new ValidationError('Waktu mulai harus sebelum waktu selesai');
         }
 
         if (startTime < now) {
-            throw new ValidationError('Cannot book in the past');
+            throw new ValidationError('Tidak dapat melakukan booking di masa lalu');
         }
 
         const duration = endTime.getTime() - startTime.getTime();
         if (duration < minimumDuration) {
-            throw new ValidationError('Minimum booking duration is 30 minutes');
+            throw new ValidationError('Durasi booking minimal 30 menit');
         }
     }
 

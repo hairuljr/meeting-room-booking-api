@@ -11,7 +11,7 @@ import { CreateRoomInput, UpdateRoomInput } from '../validators/room.validator';
  *     tags: [Rooms]
  *     responses:
  *       200:
- *         description: List of rooms
+ *         description: Daftar ruangan
  *         content:
  *           application/json:
  *             schema:
@@ -69,9 +69,9 @@ export const getAllRooms = async (
  *                 example: Medium-sized meeting room
  *     responses:
  *       201:
- *         description: Room created successfully
+ *         description: Ruangan berhasil dibuat
  *       403:
- *         description: Admin access required
+ *         description: Akses admin diperlukan
  */
 export const createRoom = async (
     req: Request<object, object, CreateRoomInput>,
@@ -80,7 +80,7 @@ export const createRoom = async (
 ): Promise<void> => {
     try {
         const room = await roomService.createRoom(req.body);
-        successResponse(res, room, 'Room created successfully', 201);
+        successResponse(res, room, 'Ruangan berhasil dibuat', 201);
     } catch (error) {
         next(error);
     }
@@ -123,9 +123,9 @@ export const createRoom = async (
  *                 example: Medium-sized meeting room
  *     responses:
  *       200:
- *         description: Room updated successfully
+ *         description: Ruangan berhasil diperbarui
  *       404:
- *         description: Room not found
+ *         description: Ruangan tidak ditemukan
  */
 export const updateRoom = async (
     req: Request<{ id: string }, object, UpdateRoomInput>,
@@ -134,7 +134,7 @@ export const updateRoom = async (
 ): Promise<void> => {
     try {
         const room = await roomService.updateRoom(req.params.id, req.body);
-        successResponse(res, room, 'Room updated successfully');
+        successResponse(res, room, 'Ruangan berhasil diperbarui');
     } catch (error) {
         next(error);
     }
@@ -156,9 +156,9 @@ export const updateRoom = async (
  *           type: string
  *     responses:
  *       200:
- *         description: Room deleted successfully
+ *         description: Ruangan berhasil dihapus
  *       404:
- *         description: Room not found
+ *         description: Ruangan tidak ditemukan
  */
 export const deleteRoom = async (
     req: Request<{ id: string }>,
@@ -194,9 +194,9 @@ export const deleteRoom = async (
  *           example: 2025-12-26
  *     responses:
  *       200:
- *         description: Room availability information
+ *         description: Informasi ketersediaan ruangan
  *       404:
- *         description: Room not found
+ *         description: Ruangan tidak ditemukan
  */
 export const checkAvailability = async (
     req: Request<{ id: string }, object, object, { date: string }>,

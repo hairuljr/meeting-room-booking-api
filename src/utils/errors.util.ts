@@ -18,21 +18,21 @@ export class ValidationError extends AppError {
 }
 
 export class UnauthorizedError extends AppError {
-    constructor(message = 'Unauthorized') {
+    constructor(message = 'Tidak terotorisasi') {
         super(401, message);
         Object.setPrototypeOf(this, UnauthorizedError.prototype);
     }
 }
 
 export class ForbiddenError extends AppError {
-    constructor(message = 'Forbidden') {
+    constructor(message = 'Akses ditolak') {
         super(403, message);
         Object.setPrototypeOf(this, ForbiddenError.prototype);
     }
 }
 
 export class NotFoundError extends AppError {
-    constructor(message = 'Resource not found') {
+    constructor(message = 'Data tidak ditemukan') {
         super(404, message);
         Object.setPrototypeOf(this, NotFoundError.prototype);
     }
@@ -46,7 +46,7 @@ export class ConflictError extends AppError {
 }
 
 export class InternalServerError extends AppError {
-    constructor(message = 'Internal server error') {
+    constructor(message = 'Terjadi kesalahan internal server') {
         super(500, message);
         Object.setPrototypeOf(this, InternalServerError.prototype);
     }

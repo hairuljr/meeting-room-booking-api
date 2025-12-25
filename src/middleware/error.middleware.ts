@@ -28,35 +28,35 @@ export const errorHandler = (
         if (prismaError.code === 'P2002') {
             return errorResponse(
                 res,
-                `Duplicate value for ${prismaError.meta?.target?.join(', ') || 'field'}`,
+                `Nilai duplikat untuk ${prismaError.meta?.target?.join(', ') || 'field'}`,
                 409,
             );
         }
 
         if (prismaError.code === 'P2025') {
-            return errorResponse(res, 'Record not found', 404);
+            return errorResponse(res, 'Data tidak ditemukan', 404);
         }
     }
 
     // Handle JWT errors
     if (err.name === 'JsonWebTokenError') {
-        return errorResponse(res, 'Invalid token', 401);
+        return errorResponse(res, 'Token tidak valid', 401);
     }
 
     if (err.name === 'TokenExpiredError') {
-        return errorResponse(res, 'Token expired', 401);
+        return errorResponse(res, 'Token kedaluwarsa', 401);
     }
 
     // Handle unknown errors
     console.error('Unhandled error:', err);
     return errorResponse(
         res,
-        process.env.NODE_ENV === 'production' ? 'Internal server error' : err.message,
+        process.env.NODE_ENV === 'production' ? 'Terjadi kesalahan internal server' : err.message,
         500,
     );
 };
 
 // 404 handler
 export const notFoundHandler = (req: Request, res: Response): Response => {
-    return errorResponse(res, `Route ${req.originalUrl} not found`, 404);
+    return errorResponse(res, `Rute ${req.originalUrl} tidak ditemukan`, 404);
 };

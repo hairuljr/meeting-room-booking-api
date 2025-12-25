@@ -3,11 +3,11 @@ import { ForbiddenError } from '../utils/errors.util';
 
 export const requireAdmin = (req: Request, _res: Response, next: NextFunction): void => {
     if (!req.user) {
-        throw new ForbiddenError('Authentication required');
+        throw new ForbiddenError('Autentikasi diperlukan');
     }
 
     if (req.user.role !== 'ADMIN') {
-        throw new ForbiddenError('Admin access required');
+        throw new ForbiddenError('Akses admin diperlukan');
     }
 
     next();

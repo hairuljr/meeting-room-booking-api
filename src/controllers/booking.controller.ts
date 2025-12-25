@@ -39,7 +39,7 @@ import { CreateBookingInput } from '../validators/booking.validator';
  *                 example: Team meeting
  *     responses:
  *       201:
- *         description: Booking created successfully
+ *         description: Booking berhasil dibuat
  *         content:
  *           application/json:
  *             schema:
@@ -52,7 +52,7 @@ import { CreateBookingInput } from '../validators/booking.validator';
  *                 data:
  *                   type: object
  *       409:
- *         description: Booking conflict
+ *         description: Konflik booking
  *         content:
  *           application/json:
  *             schema:
@@ -65,7 +65,7 @@ import { CreateBookingInput } from '../validators/booking.validator';
  *                   type: string
  *                   example: Ruangan sudah dibooking pada waktu tersebut
  *       400:
- *         description: Validation error
+ *         description: Error validasi
  */
 export const createBooking = async (
     req: Request<object, object, CreateBookingInput>,
@@ -74,11 +74,11 @@ export const createBooking = async (
 ): Promise<void> => {
     try {
         if (!req.user) {
-            throw new Error('User not authenticated');
+            throw new Error('Pengguna tidak terautentikasi');
         }
 
         const booking = await bookingService.createBooking(req.user.userId, req.body);
-        successResponse(res, booking, 'Booking created successfully', 201);
+        successResponse(res, booking, 'Booking berhasil dibuat', 201);
     } catch (error) {
         next(error);
     }
@@ -94,7 +94,7 @@ export const createBooking = async (
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: List of user's bookings
+ *         description: Daftar booking pengguna
  *         content:
  *           application/json:
  *             schema:
@@ -114,7 +114,7 @@ export const getMyBookings = async (
 ): Promise<void> => {
     try {
         if (!req.user) {
-            throw new Error('User not authenticated');
+            throw new Error('Pengguna tidak terautentikasi');
         }
 
         const bookings = await bookingService.getUserBookings(req.user.userId);

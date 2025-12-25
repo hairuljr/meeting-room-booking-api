@@ -28,7 +28,7 @@ export const authenticate = async (
         const authHeader = req.headers.authorization;
 
         if (!authHeader || !authHeader.startsWith('Bearer ')) {
-            throw new UnauthorizedError('No token provided');
+            throw new UnauthorizedError('Token tidak ditemukan');
         }
 
         const token = authHeader.substring(7); // Remove 'Bearer ' prefix
@@ -42,9 +42,9 @@ export const authenticate = async (
         next();
     } catch (error) {
         if (error instanceof jwt.JsonWebTokenError) {
-            next(new UnauthorizedError('Invalid token'));
+            next(new UnauthorizedError('Token tidak valid'));
         } else if (error instanceof jwt.TokenExpiredError) {
-            next(new UnauthorizedError('Token expired'));
+            next(new UnauthorizedError('Token kedaluwarsa'));
         } else {
             next(error);
         }

@@ -18,7 +18,7 @@ export class RoomService {
         });
 
         if (!room || !room.isActive) {
-            throw new NotFoundError('Room not found');
+            throw new NotFoundError('Ruangan tidak ditemukan');
         }
 
         return room;
@@ -31,7 +31,7 @@ export class RoomService {
         });
 
         if (existingRoom) {
-            throw new ValidationError('Room with this name already exists');
+            throw new ValidationError('Ruangan dengan nama ini sudah ada');
         }
 
         const room = await prisma.room.create({
@@ -52,7 +52,7 @@ export class RoomService {
             });
 
             if (existingRoom) {
-                throw new ValidationError('Room with this name already exists');
+                throw new ValidationError('Ruangan dengan nama ini sudah ada');
             }
         }
 
@@ -74,7 +74,7 @@ export class RoomService {
             data: { isActive: false },
         });
 
-        return { message: 'Room deleted successfully' };
+        return { message: 'Ruangan berhasil dihapus' };
     }
 
     async checkAvailability(id: string, date: string) {

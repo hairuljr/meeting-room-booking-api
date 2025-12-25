@@ -34,7 +34,7 @@ import { RegisterInput, LoginInput } from '../validators/auth.validator';
  *                 example: John Doe
  *     responses:
  *       201:
- *         description: User registered successfully
+ *         description: Registrasi berhasil
  *         content:
  *           application/json:
  *             schema:
@@ -45,7 +45,7 @@ import { RegisterInput, LoginInput } from '../validators/auth.validator';
  *                   example: true
  *                 message:
  *                   type: string
- *                   example: User registered successfully
+ *                   example: Registrasi berhasil
  *                 data:
  *                   type: object
  *                   properties:
@@ -63,7 +63,7 @@ import { RegisterInput, LoginInput } from '../validators/auth.validator';
  *                     token:
  *                       type: string
  *       400:
- *         description: Validation error
+ *         description: Error validasi
  *         content:
  *           application/json:
  *             schema:
@@ -76,7 +76,7 @@ export const register = async (
 ): Promise<void> => {
     try {
         const result = await authService.register(req.body);
-        successResponse(res, result, 'User registered successfully', 201);
+        successResponse(res, result, 'Registrasi berhasil', 201);
     } catch (error) {
         next(error);
     }
@@ -108,7 +108,7 @@ export const register = async (
  *                 example: Admin123!
  *     responses:
  *       200:
- *         description: Login successful
+ *         description: Login berhasil
  *         content:
  *           application/json:
  *             schema:
@@ -119,7 +119,7 @@ export const register = async (
  *                   example: true
  *                 message:
  *                   type: string
- *                   example: Login successful
+ *                   example: Login berhasil
  *                 data:
  *                   type: object
  *                   properties:
@@ -137,7 +137,7 @@ export const register = async (
  *                     token:
  *                       type: string
  *       401:
- *         description: Invalid credentials
+ *         description: Kredensial tidak valid
  *         content:
  *           application/json:
  *             schema:
@@ -150,7 +150,7 @@ export const login = async (
 ): Promise<void> => {
     try {
         const result = await authService.login(req.body);
-        successResponse(res, result, 'Login successful');
+        successResponse(res, result, 'Login berhasil');
     } catch (error) {
         next(error);
     }

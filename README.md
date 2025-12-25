@@ -108,6 +108,9 @@ Once the server is running, access the full API documentation at:
 | POST | `/api/v1/auth/login` | Login user | Public |
 | GET | `/api/v1/rooms` | List all rooms | Public |
 | POST | `/api/v1/rooms` | Create room | Admin |
+| PUT | `/api/v1/rooms/{id}` | Update room | Admin |
+| DELETE | `/api/v1/rooms/{id}` | Delete room | Admin |
+| GET | `/api/v1/rooms/{id}/availability` | Check room availability | Public |
 | POST | `/api/v1/bookings` | Book a room | User |
 | GET | `/api/v1/bookings/my` | Get my bookings | User |
 

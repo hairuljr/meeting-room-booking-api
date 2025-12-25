@@ -15,7 +15,7 @@ export class AuthService {
         });
 
         if (existingUser) {
-            throw new ValidationError('Email already registered');
+            throw new ValidationError('Email sudah terdaftar');
         }
 
         // Hash password
@@ -57,14 +57,14 @@ export class AuthService {
         });
 
         if (!user) {
-            throw new UnauthorizedError('Invalid email or password');
+            throw new UnauthorizedError('Email atau password salah');
         }
 
         // Verify password
         const isPasswordValid = await bcrypt.compare(data.password, user.password);
 
         if (!isPasswordValid) {
-            throw new UnauthorizedError('Invalid email or password');
+            throw new UnauthorizedError('Email atau password salah');
         }
 
         // Generate JWT token
