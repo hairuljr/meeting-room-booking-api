@@ -4,6 +4,7 @@ import { errorResponse } from '../utils/response.util';
 
 export const errorHandler = (
     err: Error,
+    _req: Request,
     res: Response,
     _next: NextFunction,
 ): Response => {
