@@ -91,6 +91,10 @@ npm test
 npm run test:coverage
 ```
 
+## 📬 Postman Collection
+Postman collection is available at:
+/docs/Meeting Room Booking API.postman_collection.json
+
 ## 📚 API Documentation
 
 Once the server is running, access the full API documentation at:
